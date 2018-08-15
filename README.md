@@ -19,9 +19,17 @@ docker-compose up
 To rebuild this image you must use `docker-compose build`
 
 # access mysql 
+## from the host machine (external to the docker containers)
 mysql -h<<image ip>> --port=9906 -udevuser -p
 or 
 mysql -h<<image ip>> --port=9906 -uroot -p
+
+## from inside a container
+You cannot run mysql from inside another container but can connect to mysql from inside another container. The ame of the container is
+used for the url. The other details are
+port: 9906
+user: devpass
+password: devtest
 
 # run website in browser
 http://<docker-host-ip-address>:8080
