@@ -10,8 +10,7 @@ sudo docker run -p 8080:80 -d -v ~/Documents/Repositories/sites:/var/www/Website
 -p 8080:80
 #### linked volumes
 -v ~/Documents/Repositories/sites:/var/www/Website
-
-# ssh into container
+## ssh into a container
 sudo docker exec -it <<container name>> bash
 
 # startup the docker composition
@@ -27,9 +26,28 @@ mysql -h<<image ip>> --port=9906 -uroot -p
 ## from inside a container
 You cannot run mysql from inside another container but can connect to mysql from inside another container. The ame of the container is
 used for the url. The other details are
-port: 9906
+host: db;
 user: devpass
 password: devtest
+port: 3306 
+
+test the connection
+php /code/test_mysql_connection.php
+
+# linked folders
+ my-web-php7.0:/code .
+
+
+# containers created
+php & apache (my-web-php7.0):
+php 7.0
+apache 5.7
+
+mysql:
+mysql 5.7
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
 
 # run website in browser
 http://<docker-host-ip-address>:8080

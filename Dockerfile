@@ -2,20 +2,13 @@ FROM ubuntu:latest
 
 MAINTAINER Name<email>
 
-#ENV myDockerMysqlPassword root
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install basics
 RUN apt-get update
 RUN apt-get install -y software-properties-common && add-apt-repository ppa:ondrej/php && apt-get update
 RUN apt-get install -y curl
-
-# Install mysql
-#RUN debconf-set-selections <<< "mysql-server mysql-server/root_password password root"
-#RUN debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
-##RUN apt-get install -y mysql-server-5.6
-#RUN apt-get install -y mysql-server-5.7
+RUN apt-get install -y vi
 
 ## Install PHP 5.6
 #RUN apt-get install -y --allow-unauthenticated php5.6 php5.6-mysql php5.6-mcrypt php5.6-cli php5.6-gd php5.6-curl
@@ -25,8 +18,6 @@ RUN apt-get install -y curl
 #RUN a2enmod rewrite
 
 # Install PHP 7.0
-#sudo add-apt-repository ppa:ondrej/php
-#sudo apt-get -y update
 RUN apt-get -y install php7.0 php7.0-mcrypt php7.0-mbstring php7.0-curl php7.0-cli php7.0-mysql php7.0-gd php7.0-intl \
 php7.0-xsl php7.0-zip php7.0-bcmath php7.0-soap git
 
