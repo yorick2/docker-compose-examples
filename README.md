@@ -12,6 +12,9 @@ sudo docker run -p 8080:80 -d -v ~/Documents/Repositories/sites:/var/www/Website
 -v ~/Documents/Repositories/sites:/var/www/Website
 ## ssh into a container
 sudo docker exec -it <<container name>> bash
+### Stop all running containers
+Warning: This will stop all your containers.
+docker stop $(docker ps -a -q)
 ### Delete all containers
 Warning: This will destroy all your images and containers. It will not be possible to restore them!
 docker rm $(docker ps -a -q)
@@ -51,9 +54,6 @@ apache 5.7
 
 mysql:
 mysql 5.7
-
-// Create connection
-$conn = new mysqli($servername, $username, $password);
 
 # run website in browser
 http://<docker-host-ip-address>:8080
