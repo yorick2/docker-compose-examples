@@ -1,11 +1,27 @@
 version: '3'
 
 services:
+        web7.2:
+                build: ./php7.2
+                container_name: "php7.2"
+                ports:
+                - "8072:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
+        web7.1:
+                build: ./php7.1
+                container_name: "php7.1"
+                ports:
+                - "8071:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
         web7.0:
                 build: ./php7.0
                 container_name: "php7.0"
                 ports:
-                - "8001:80"
+                - "8070:80"
                 volumes:
                 - ../../sites:/var/www/html
                 - .:/code
@@ -13,7 +29,7 @@ services:
                 build: ./php5.6
                 container_name: "php5.6"
                 ports:
-                - "8000:80"
+                - "8056:80"
                 volumes:
                 - ../../sites:/var/www/html
                 - .:/code
