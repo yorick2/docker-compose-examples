@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+        web7.2:
+                build: ./php7.2
+                container_name: "php7.2"
+                ports:
+                - "8072:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
+        web7.1:
+                build: ./php7.1
+                container_name: "php7.1"
+                ports:
+                - "8071:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
+        web7.0:
+                build: ./php7.0
+                container_name: "php7.0"
+                ports:
+                - "8070:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
+        web5.6:
+                build: ./php5.6
+                container_name: "php5.6"
+                ports:
+                - "8056:80"
+                volumes:
+                - ../../sites:/var/www/html
+                - .:/code
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
+        db:
+                image: mysql:5.7
+                environment:
+                        MYSQL_ROOT_PASSWORD: my_secret_pw_shh
+                        MYSQL_DATABASE: test_db
+                        MYSQL_USER: devuser
+                        MYSQL_PASSWORD: devpass
+                ports:
+                        - "9906:3306"

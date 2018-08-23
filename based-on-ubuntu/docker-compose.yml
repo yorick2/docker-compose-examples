@@ -9,7 +9,7 @@ services:
                 volumes:
                 - ../../sites:/var/www/
                 - .:/code
-#                - logvolume01:/var/log
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
         db:
                 image: mysql:5.7
                 environment:
@@ -19,5 +19,3 @@ services:
                         MYSQL_PASSWORD: devpass
                 ports:
                         - "9906:3306"
-#        volumes:
-#                logvolume01: {}

@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:5.6-apache
 # user guid for the base container
 # https://github.com/docker-library/docs/blob/master/php/README.md
 
@@ -12,8 +12,8 @@ RUN apt-get install -y curl vim git
 # install php extensions
 RUN docker-php-ext-install mysqli
 
-RUN pecl install xdebug-2.6.0 \
-	&& docker-php-ext-enable xdebug
+# RUN pecl install xdebug-2.6.0 \
+# 	&& docker-php-ext-enable xdebug
 
 # Install Composer.
 RUN cd ~ && curl -sS https://getcomposer.org/installer | php
