@@ -24,7 +24,7 @@ docker rmi $(docker images -q)
 
 # startup the docker composition
 docker-compose up
-To rebuild this image you must use `docker-compose build`
+# To rebuild this image you must use `docker-compose build`
 
 # access mysql 
 ## from the host machine (external to the docker containers)
@@ -42,6 +42,14 @@ port: 3306
 
 test the connection
 php /code/test_mysql_connection.php
+
+# tests
+## connection tests
+Included are some test files to test that php, apache and mysql connections work. The list of tests are accessable from. The port can be found in the docker-compose.yml for the example. 
+http://localhost:<<port>>/docker-tests/
+
+e.g
+http://localhost:8000/docker-tests/
 
 # linked folders
  my-web-php7.0:/code .

@@ -9,6 +9,7 @@ services:
                 volumes:
                 - ../../sites:/var/www/html
                 - .:/code
+                - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
         db:
                 image: mysql:5.7
                 environment:

@@ -6,8 +6,11 @@ MAINTAINER Name<email>
 
 RUN apt-get update
 
-#install required programs
+# install required programs
 RUN apt-get install -y curl vim git
+
+# install php extensions
+RUN docker-php-ext-install mysqli
 
 RUN pecl install xdebug-2.6.0 \
 	&& docker-php-ext-enable xdebug
@@ -21,6 +24,3 @@ RUN chmod +x /usr/local/bin/composer
 ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
-
-# Update the default apache site with the config we created.
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
