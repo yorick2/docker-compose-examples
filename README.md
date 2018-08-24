@@ -1,4 +1,12 @@
-A docker image test
+Some docker image test
+
+# examples 
+## based-on-ubuntu
+This is a php, apache, mysql setup that uses a ubuntu container
+## using-official-php-container
+This is a php, apache, mysql setup that uses an official php apache container
+## multiple-php-versions-using-official-php-container
+This shows how to use docker compose to run multiple versions of php symltaniously while using the same mysql container. This can be useful for testing a site on multiple versions of php or running multiple sites that require different php versions on your local.
 
 # working with a container
 ## create a container 
@@ -22,9 +30,11 @@ docker rm $(docker ps -a -q)
 Warning: This will destroy all your images and containers. It will not be possible to restore them!
 docker rmi $(docker images -q)
 
-# startup the docker composition
+# docker composer
+## startup the docker composition
 docker-compose up
-# To rebuild this image you must use `docker-compose build`
+## rebuild a docker-compose images
+To rebuild this image you must use `docker-compose build`
 
 # access mysql 
 ## from the host machine (external to the docker containers)
