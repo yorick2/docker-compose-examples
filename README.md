@@ -34,7 +34,7 @@ docker rmi $(docker images -q)
 ## startup the docker composition
 docker-compose up
 ## rebuild a docker-compose images
-To rebuild this image you must use `docker-compose build`
+To rebuild this image you must use `docker-compose build`. To stop docker using the cache add the `--no-cache` flag 'e.g. `docker-compose build --no-cache`
 
 # access mysql 
 ## from the host machine (external to the docker containers)
@@ -43,7 +43,7 @@ or
 mysql -h<<image ip>> --port=9906 -uroot -p
 
 ## from inside a container
-You cannot run mysql from inside another container but can connect to mysql from inside another container. The ame of the container is
+You cannot run mysql from inside another container but can connect to mysql from inside another container. The name of the container is
 used for the url. The other details are
 host: db;
 user: devpass
