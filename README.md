@@ -7,6 +7,8 @@ This is a php, apache, mysql setup that uses a ubuntu container
 This is a php, apache, mysql setup that uses an official php apache container
 ## multiple-php-versions-using-official-php-container
 This shows how to use docker compose to run multiple versions of php symltaniously while using the same mysql container. This can be useful for testing a site on multiple versions of php or running multiple sites that require different php versions on your local.
+## host-multiple-docker-sites
+This shows how to use an nginx-proxy docker container to allow multiple sites to run, each with site with a seperate web server docker container e.g. nginx or apache
 
 # working with a container
 ## create a container 

@@ -1,0 +1,15 @@
+version: "3"
+services:
+  l.test:
+    image: httpd 
+    container_name: l.test-httpd
+    environment:
+       VIRTUAL_HOST: l.test
+    expose:
+      - 80
+    volumes:
+      - ./public_html/:/usr/local/apache2/htdocs/
+networks:
+  default:
+    external:
+      name: nginx-proxy

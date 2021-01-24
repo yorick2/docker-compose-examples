@@ -1,0 +1,15 @@
+version: "3"
+services:
+  l.sample:
+    image: nginx 
+    container_name: l.sample-nginx
+    environment:
+       VIRTUAL_HOST: l.sample
+    expose:
+      - 80
+    volumes:
+      - ./public_html/:/usr/share/nginx/html/
+networks:
+  default:
+    external:
+      name: nginx-proxy
