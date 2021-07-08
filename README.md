@@ -13,6 +13,19 @@ One container is used as a base image and one container that builds its image fr
 This shows how to use an nginx-proxy docker container to allow multiple sites to run, each with site with a seperate web server docker container e.g. nginx or apache
 ## multiple-php-versions-using-official-php-container
 This shows how to use docker compose to run multiple versions of php symltaniously while using the same mysql container. This can be useful for testing a site on multiple versions of php or running multiple sites that require different php versions on your local.
+## multiple-versions-in-the-same-file
+This is similar to extend-a-local-base-image. But when its built using docker-compose it will always build all the stages in the Dockerfile, until it gets to the last stage required.
+It multiple stages in one file but this may contain unwanted stages and is often wasteful in my opinion. But it can be useful if the container has two or more states without much difference, or that extend others. Like the exmaple here. In which case the order the stages are in the file should be considered. 
+
+| Our container | dependancies        | built stages in our example |
+| ------------- |---------------------| --------------------------- |
+| base          |                     | base                        |
+| prod          | base                | base,prod                   |
+| stage         | base                | base,prod,stage             |
+| dev           | prod,base           | base,prod,stage,dev         |
+
+Here the order is based on limiting server build time and taking the penalty on dev setup time. This could be reduced by using a seperate Dockerfile for the dev stage and a seperate docker-compose.yml file for development environment to allow it to be used safly and reliably.
+
 ## using-official-php-container
 This is a php, apache, mysql setup that uses an official php apache container
 
