@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+    base:
+       image: base
+       build:
+           context: .
+           dockerfile: Dockerfile1
+    main:
+       image: main
+       build:
+           context: .
+           dockerfile: Dockerfile2
+       depends_on:
+           - testingbase

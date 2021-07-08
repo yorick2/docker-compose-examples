@@ -1,0 +1,4 @@
+FROM alpine:latest as base
+
+RUN echo ##### base container #####
+

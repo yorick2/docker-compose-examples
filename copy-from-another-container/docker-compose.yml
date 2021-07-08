@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+    compiler:
+       image: compiler
+       build:
+           context: .
+           dockerfile: Dockerfile1
+    main:
+       image: main
+       build:
+           context: .
+           dockerfile: Dockerfile2
+       volumes:
+            - ./public:/var/www/html
+       depends_on:
+           - compiler

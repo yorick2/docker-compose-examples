@@ -1,0 +1,18 @@
+FROM compiler as main
+
+RUN # "##################################### main container #####################################"
+
+# copy file from compiler
+COPY --from=compiler /var/tmp/stylesheets/style.css /var/tmp/style.css
+
+# echo out the folder and file contents
+RUN echo "\n\e[32m" \
+	&& echo "---------- ls /var/tmp/ ----------\n " \
+	&& ls /var/tmp/ \
+	&& echo "\e[34m" \
+	&& echo "\n---------- created css file content ----------\n " \
+	&& cat /var/tmp/style.css \
+	&& echo "\e[39m"
+
+# copy the file into our mounted folder. This can only be done in the entrypoint that runs after the volumes are mounted.
+ENTRYPOINT ["cp", "/var/tmp/style.css", "/var/www/html/style.css"]
