@@ -2,19 +2,19 @@ Some docker image test
 
 # examples 
 ## based-on-ubuntu
-This is a php, apache, mysql setup that uses a ubuntu container
+This is a simple php, apache, mysql container that uses a ubuntu container.
 ## copy from one container to another
 This is useful if something is compiled. The compiler can run then stop and the compiled file can be used in your main container.
-## using-official-php-container
-This is a php, apache, mysql setup that uses an official php apache container
 ## extend-a-local-base-image
 One container is used as a base image and one container that builds its image from that.
 - Splitting a dockerfile into multiple stages can be useful. In the example if we make changes to the main containers dockerfile, we just rebuild the main container i.e. only follow the steps in that dockerfile to the base image. This can save alot of time if the base image has alot of steps.
 - This can also be useful for having both development and poduction containers, created from a base web server image.
-## multiple-php-versions-using-official-php-container
-This shows how to use docker compose to run multiple versions of php symltaniously while using the same mysql container. This can be useful for testing a site on multiple versions of php or running multiple sites that require different php versions on your local.
 ## host-multiple-docker-sites
 This shows how to use an nginx-proxy docker container to allow multiple sites to run, each with site with a seperate web server docker container e.g. nginx or apache
+## multiple-php-versions-using-official-php-container
+This shows how to use docker compose to run multiple versions of php symltaniously while using the same mysql container. This can be useful for testing a site on multiple versions of php or running multiple sites that require different php versions on your local.
+## using-official-php-container
+This is a php, apache, mysql setup that uses an official php apache container
 
 # working with a container
 ## create a container 
