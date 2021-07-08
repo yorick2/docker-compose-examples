@@ -1,6 +1,6 @@
 FROM compiler as main
 
-RUN # "##################################### main container #####################################"
+RUN echo -e "\e[32m ##################################### main container #####################################\e[39m"
 
 # copy file from compiler
 COPY --from=compiler /var/tmp/stylesheets/style.css /var/tmp/style.css
@@ -15,4 +15,5 @@ RUN echo "\n\e[32m" \
 	&& echo "\e[39m"
 
 # copy the file into our mounted folder. This can only be done in the entrypoint that runs after the volumes are mounted.
+# The entrypoint is run when runnning docker-compose start or docker-compose start.
 ENTRYPOINT ["cp", "/var/tmp/style.css", "/var/www/html/style.css"]

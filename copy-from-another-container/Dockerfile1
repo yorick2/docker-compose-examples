@@ -3,7 +3,7 @@ FROM node:slim as compiler
 WORKDIR /var/tmp/stylesheets
 
 
-RUN # "##################################### compiler container #####################################"
+RUN echo -e "\e[32m ##################################### compiler container #####################################\e[39m"
 RUN npm install -g sass
 COPY style.scss /var/tmp/stylesheets/style.scss
 RUN sass style.scss style.css
