@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# create $command variable
+read -r -d '' command <<EOF
+    echo "########### do some file dependant stuff here1 ###########";
+EOF
+wait-for-file.sh "$command"
+
+# create $command variable
+read -r -d '' command <<EOF
+    echo "########### prepare to do some mysql dependant stuff here ###########";
+    # allow the container and connection to setup properly
+    # (maybe long but this should increase reliablity)
+    sleep 3
+    echo "########### do some mysql dependant stuff here ###########";
+EOF
+wait-for-mysql.sh "$command"
+
+## remove insecure variables
+unset DB_HOST DB_USERNAME DB_PASSWORD
+
+# remove tmp files
+apt-get -y autoremove
+apt-get clean
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+echo "###### web server complete ######"
+
+# changes user to close privileged user session
+# exec gosu $WWWUSER "$@"
+
+exec "$@"
